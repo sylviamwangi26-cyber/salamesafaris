@@ -1093,166 +1093,495 @@ footer {
 /*gallery.css*/
 /* ================= GALLERY PAGE STYLING ================= */
 
-/* ================================
-   GALLERY BACKGROUND (CINEMATIC)
-================================ */
-.gallery-section {
-  background: linear-gradient(
-      rgba(0,0,0,0.75),
-      rgba(0,0,0,0.85)
-    ),
-    url("../assets/images/gallery-bg.jpg") center/cover fixed no-repeat;
-  padding: 100px 0;
+/* ==============================
+   GALLERY HORIZONTAL SCROLL + GLASS TITLES
+============================== */
+gallery-section h2 {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
+  padding: 15px 25px;
+  border-radius: 12px;
+  display: inline-block;
+  margin: 40px 20px 20px 20px;
+  font-size: 2rem;
   color: #fff;
+  text-shadow: 1px 1px 5px #000;
 }
 
-/* ================================
-   CAROUSEL CONTAINER
-================================ */
-.carousel-container {
-  perspective: 1600px;
-  margin: 140px auto;
+/* HORIZONTAL SCROLL SECTIONS */
+.gallery-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  padding: 20px;
+  scroll-behavior: smooth;
   position: relative;
-  width: 100%;
-  max-width: 1200px;
 }
 
-/* ================================
-   GLASS TITLE (SECTION NAME)
-================================ */
-.carousel-title {
-  position: absolute;
-  top: -70px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 18px 40px;
-  font-size: 1.6rem;
-  font-weight: 600;
-  backdrop-filter: blur(14px);
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.25);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
-  text-align: center;
-  white-space: nowrap;
+.gallery-grid::-webkit-scrollbar {
+  height: 10px;
 }
 
-/* ================================
-   3D ROTATING CAROUSEL
-================================ */
-.carousel {
+.gallery-grid::-webkit-scrollbar-thumb {
+  background: gold;
+  border-radius: 5px;
+}
+
+/* INDIVIDUAL IMAGE CARDS */
+.gallery-grid img {
+  height: 300px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  transition: transform 0.5s ease;
+  cursor: pointer;
   position: relative;
-  width: 100%;
-  height: 380px;
-  transform-style: preserve-3d;
-  animation: rotateCarousel 40s linear infinite;
 }
 
-/* ================================
-   INDIVIDUAL IMAGE PANEL
-================================ */
-.carousel-item {
+/* SECRET WORD ON HOVER */
+.gallery-grid img::after {
+  content: "KENYA";
+  color: rgba(255, 255, 255, 0);
+  font-size: 3rem;
+  font-weight: bold;
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 300px;
-  height: 200px;
-  transform-style: preserve-3d;
-  transform-origin: center center -450px;
-  transition: transform 0.6s ease, filter 0.6s ease;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+.gallery-grid img:hover::after {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* IMAGE HOVER EFFECT */
+.gallery-grid img:hover {
+  transform: scale(1.15);
+  z-index: 10;
+}
+
+/* GOLD LINE BOTTOM */
+.gallery-grid img::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  bottom: 0;
+  left: 0;
+  background: gold;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .gallery-grid img { height: 220px; }
+  .gallery-section h2 { font-size: 1.6rem; padding: 10px 15px; }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid img { height: 160px; }
+  .gallery-section h2 { font-size: 1.2rem; }
+}
+
+/* ==========================
+   TESTIMONIAL PAGE BACKGROUND
+=========================== */
+
+body {
+  background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    url("../images/testimonial-bg.jpg"); /* change to your image path */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* ==========================
+   HERO SECTION
+=========================== */
+
+.page-hero {
+  text-align: center;
+  padding: 120px 20px 80px;
+  color: #fff;
+}
+
+.page-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.page-hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+/* ==========================
+   TESTIMONIAL SECTION
+=========================== */
+
+.testimonials-section {
+  padding: 80px 5%;
+}
+
+/* GRID */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+/* CARD */
+.testimonial-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 18px;
+  color: #fff;
+  position: relative;
+  transition: all 0.4s ease;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* QUOTE ICON */
+.testimonial-card::before {
+  content: "“";
+  font-size: 4rem;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  color: gold;
+  opacity: 0.6;
+}
+
+/* TEXT */
+.testimonial-card p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* NAME */
+.testimonial-card h4 {
+  font-weight: bold;
+  font-size: 1rem;
+  color: gold;
+  letter-spacing: 0.5px;
+}
+
+/* HOVER EFFECT */
+.testimonial-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ==========================
+   CTA SECTION
+=========================== */
+
+.testimonial-cta {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(
+    rgba(0,0,0,0.7),
+    rgba(0,0,0,0.7)
+  );
+}
+
+.testimonial-cta h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+/* BUTTON */
+.btn-primary {
+  background: gold;
+  color: #000;
+  padding: 15px 35px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #ffd700;
+  transform: scale(1.05);
+}
+
+/* ==========================
+   FOOTER
+=========================== */
+
+footer {
+  text-align: center;
+  padding: 25px;
+  background: rgba(0,0,0,0.85);
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* ==========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 768px) {
+  .page-hero h1 {
+    font-size: 2.3rem;
+  }
+
+  .testimonial-card {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .testimonial-cta h2 {
+    font-size: 1.7rem;
+  }
 }
 
 /* ================================
-   IMAGE STYLE
+   SERVICES SECTION
 ================================ */
-.carousel-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.services-section {
+  padding: 80px 20px;
+}
+
+.services-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* ================================
+   SERVICE CARD
+================================ */
+.service-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
   border-radius: 18px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  padding: 25px;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+}
+
+/* ================================
+   SERVICE IMAGE
+================================ */
+.service-img {
+  overflow: hidden;
+  border-radius: 14px;
+  margin-bottom: 20px;
+}
+
+.service-img img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
   transition: transform 0.6s ease;
 }
 
-/* GOLD BASE LINE */
-.carousel-item::after {
-  content: "";
-  position: absolute;
-  bottom: -8px;
-  left: 0;
-  width: 100%;
-  height: 6px;
-  background: linear-gradient(90deg, #c9a24d, #f5d77a, #c9a24d);
-  border-radius: 6px;
+.service-card:hover img {
+  transform: scale(1.1);
 }
 
 /* ================================
-   SECRET WORD
+   TEXT
 ================================ */
-.secret-word {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3.5rem;
-  font-weight: 800;
-  color: white;
-  letter-spacing: 6px;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-  text-shadow: 0 0 30px rgba(255,255,255,0.9);
+.service-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 12px;
+  color: gold;
+}
+
+.service-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  opacity: 0.95;
 }
 
 /* ================================
-   HOVER EFFECTS
+   CTA
 ================================ */
-.carousel-item:hover {
-  transform:
-    translate(-50%, -50%)
-    rotateY(var(--rotate))
-    translateZ(580px);
-  z-index: 99;
+.service-cta {
+  text-align: center;
+  padding: 80px 20px;
+  color: #fff;
 }
 
-.carousel-item:hover img {
-  transform: scale(1.2);
+.service-cta h2 {
+  font-size: 2.4rem;
+  margin-bottom: 15px;
 }
 
-
-.carousel-item:hover .secret-word {
-  opacity: 1;
+.service-cta p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  opacity: 0.9;
 }
 
-/* ================================
-   ROTATION ANIMATION
-================================ */
-@keyframes rotateCarousel {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(-360deg);
-  }
-}
-
+/*service.css
 /* ================================
    RESPONSIVE
 ================================ */
-@media (max-width: 768px) {
-  .carousel {
-    height: 300px;
-  }
-
-  .carousel-item {
-    width: 220px;
-    height: 150px;
-    transform-origin: center center -350px;
-  }
-
-  .carousel-title {
-    font-size: 1.2rem;
-    padding: 14px 26px;
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
+
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-img img {
+    height: 200px;
+  }
+}
+/*helpcentre.html
+/* ===============================
+   HELP CENTER STYLING ONLY
+================================ */
+
+.helpcenter-section {
+  min-height: 100vh;
+  padding: 80px 20px;
+  background:
+    linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+    url("../assets/images/helpcenter-bg.jpg") center/cover no-repeat;
+}
+
+.helpcenter-container {
+  max-width: 900px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* PAGE TITLE */
+.helpcenter-section h1 {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin-bottom: 15px;
+}
+
+.helpcenter-section p.intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  opacity: 0.9;
+}
+
+/* FAQ ACCORDION */
+.help-item {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+
+/* QUESTION */
+.help-item summary {
+  padding: 20px 24px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.help-item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* PLUS / MINUS ICON */
+.help-item summary::after {
+  content: "+";
+  font-size: 1.6rem;
+  color: gold;
+  transition: 0.3s ease;
+}
+
+.help-item[open] summary::after {
+  content: "–";
+}
+
+/* ANSWER */
+.help-item p {
+  padding: 0 24px 20px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+/* HOVER EFFECT */
+.help-item:hover {
+  transform: translateY(-3px);
+}
+
+/* CTA UNDER HELP */
+.help-cta {
+  margin-top: 60px;
+  text-align: center;
+}
+
+.help-cta h2 {
+  margin-bottom: 15px;
+}
+
+.help-cta a {
+  display: inline-block;
+  background: gold;
+  color: #000;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.help-cta a:hover {
+  transform: scale(1.05);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .help-item summary {
+    font-size: 0.95rem;
+    padding: 16px 18px;
+  }
+
+  .help-item p {
+    padding: 0 18px 16px;
+  }
+}
+

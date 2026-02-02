@@ -1,23 +1,21 @@
-document.querySelectorAll(".carousel").forEach(carousel => {
-    const items = carousel.querySelectorAll(".carousel-item");
-    const total = items.length;
-    const angle = 360 / total;
-  
-    items.forEach((item, index) => {
-      item.style.transform = `
-        rotateY(${index * angle}deg)
-        translateZ(450px)
-        translate(-50%, -50%)
-      `;
-    });
-  
-    // Pause rotation on hover (luxury feel)
-    carousel.addEventListener("mouseenter", () => {
-      carousel.style.animationPlayState = "paused";
-    });
-  
-    carousel.addEventListener("mouseleave", () => {
-      carousel.style.animationPlayState = "running";
-    });
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+
+// All images
+const galleryImages = document.querySelectorAll(".gallery-grid img");
+
+// Open lightbox on click
+galleryImages.forEach(img => {
+  img.addEventListener("click", () => {
+    lightbox.style.display = "flex";
+    lightboxImg.src = img.src;
   });
-  
+});
+
+// Close lightbox on click outside image
+function closeLightbox() {
+  lightbox.style.display = "none";
+}
+lightbox.addEventListener("click", (e) => {
+  if (e.target !== lightboxImg) closeLightbox();
+});

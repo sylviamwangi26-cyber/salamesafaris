@@ -4,10 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Our Services | Salame Safari Tours</title>
-  <link rel="stylesheet" href="../style.css"
+  <link rel="stylesheet" href="../style.css">
 </head> 
 
 <body>
+
+<!-- PAGE BACKGROUND -->
+<div class="page-bg" style="
+  background:
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+    url('pictures/hedra-image-a145f8d8-a4df-4dfa-b11e-765c186fb7eb.png') center/cover no-repeat fixed;
+">
 
 <!-- NAVBAR -->
 <nav class="navbar">
@@ -19,38 +26,56 @@
   <a href="blog.html">Blog</a>
   <a href="contacts.html">Contact</a>
   <a href="helpcenter.html">Help Center</a>
-  <a href="bookings.html" class="btn-primary">booknow</a>
-  <a href="testimonial.html"></a>
+  <a href="bookings.html" class="btn-primary">Book Now</a>
 </nav>
 
 <!-- HERO -->
 <header class="page-hero">
   <h1>Our Services</h1>
-  <p>What we offer to make your safari unforgettable</p>
+  <p>Carefully crafted experiences designed for comfort, culture, and adventure</p>
 </header>
 
 <!-- SERVICES SECTION -->
 <section class="services-section">
 
-  <!-- SERVICE CARD 1 -->
-  <div class="service-card">
-    <img src="assets/images/services/cooking.jpg" alt="Cooking Classes">
-    <h2>Cooking Classes</h2>
-    <p>Learn to prepare traditional Kenyan meals with our local chefs. Fun, interactive, and delicious!</p>
-  </div>
+  <div class="services-grid">
 
-  <!-- SERVICE CARD 2 -->
-  <div class="service-card">
-    <img src="assets/images/services/carhire.jpg" alt="Car Hire">
-    <h2>Car Hire</h2>
-    <p>Reliable safari vehicles with experienced drivers to explore Kenya’s parks comfortably and safely.</p>
-  </div>
+    <!-- SERVICE CARD 1 -->
+    <div class="service-card">
+      <div class="service-img">
+        <img src="pictures/cooking 1.jpg" alt="Cooking Classes">
+      </div>
+      <h2>Cooking Classes</h2>
+      <p>
+        Discover authentic Kenyan cuisine through hands-on cooking sessions
+        guided by local chefs using fresh coastal and traditional ingredients.
+      </p>
+    </div>
 
-  <!-- SERVICE CARD 3 -->
-  <div class="service-card">
-    <img src="assets/images/service/tourguide.jpg" alt="Tour Guiding">
-    <h2>Tour Guiding</h2>
-    <p>Expert guides to show you the wildlife, hidden gems, and cultural experiences you won’t find on your own.</p>
+    <!-- SERVICE CARD 2 -->
+    <div class="service-card">
+      <div class="service-img">
+        <img src="pictures/car  hire.png" alt="Car Hire">
+      </div>
+      <h2>Car Hire</h2>
+      <p>
+        Travel in comfort with our fully equipped safari vehicles driven by
+        experienced professionals who know Kenya’s terrain inside out.
+      </p>
+    </div>
+
+    <!-- SERVICE CARD 3 -->
+    <div class="service-card">
+      <div class="service-img">
+        <img src="pictures/community/gallry.jpg" alt="Tour Guiding">
+      </div>
+      <h2>Tour Guiding</h2>
+      <p>
+        Our certified guides bring wildlife, landscapes, and culture to life,
+        offering stories and insights you won’t find in guidebooks.
+      </p>
+    </div>
+
   </div>
 
 </section>
@@ -58,7 +83,7 @@
 <!-- CTA -->
 <section class="service-cta">
   <h2>Ready for Your Safari Experience?</h2>
-  <p>Book one of our services today and create memories for a lifetime!</p>
+  <p>Let us handle the details while you enjoy the journey</p>
   <a href="bookings.html" class="btn-primary">Book Now</a>
 </section>
 
@@ -66,6 +91,8 @@
 <footer>
   <p>© 2026 Salame Safari Tours. All Rights Reserved.</p>
 </footer>
+
+</div> <!-- END PAGE BG -->
 
 <script src="js/lang.js"></script>
 <script src="js/main.js"></script>

@@ -2,85 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Help Center | Salame Safari Tours</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="../style.css">
 </head>
 
 <body>
 
+<!-- PAGE BACKGROUND -->
+<div class="page-bg" style="
+  background:
+    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+    url('pictures/jumbo.jpeg') center/cover no-repeat fixed;
+">
+
 <!-- NAVBAR -->
 <nav class="navbar">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="services.html">Services</a>
-  <a href="packages.html">Packages</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="blog.html">Blog</a>
-  <a href="contacts.html">Contact</a>
-  <a href="helpcenter.html" class="active">Help Center</a>
-  <a href="bookings.html">Book Now</a>
-  <a href="testimonial.html">Testimonial</a>
+  <div class="nav-container">
+    <a href="index.html" class="nav-btn">HOME</a>
+    <a href="about.html" class="nav-btn">ABOUT</a>
+    <a href="gallery.html" class="nav-btn">GALLERY</a>
+    <a href="services.html" class="nav-btn">SERVICES</a>
+    <a href="blog.html" class="nav-btn">BLOG</a>
+    <a href="contacts.html" class="nav-btn">CONTACT</a>
+    <a href="helpcenter.html" class="nav-btn active">HELP CENTER</a>
+    <a href="bookings.html" class="nav-btn">BOOK NOW</a>
+  </div>
 </nav>
 
 <!-- HERO -->
 <header class="page-hero">
   <h1>Help Center</h1>
-  <p>Your guide to booking, safaris, and travel support</p>
+  <p>Everything you need to know before, during, and after your safari</p>
 </header>
 
-<!-- HELP CONTENT -->
-<section class="help-section">
+<!-- HELP CENTER SECTION -->
+<section class="helpcenter-section">
 
-  <div class="help-box">
-    <h2>How to Book</h2>
-    <p>
-      You can book your safari through our website, WhatsApp, or email.
-      Once confirmed, our team will send pickup details and itinerary.
-    </p>
+  <div class="helpcenter-container">
+
+    <!-- FAQ ITEM -->
+    <details class="help-item">
+      <summary>How do I book a safari?</summary>
+      <p>
+        You can book directly through our <a href="bookings.html">booking page</a>,
+        WhatsApp, email, or social media. Once submitted, our team will contact you
+        within 24 hours to confirm details.
+      </p>
+    </details>
+
+    <details class="help-item">
+      <summary>Do you offer custom safari packages?</summary>
+      <p>
+        Yes. All our safaris can be fully customized based on your travel dates,
+        budget, interests, and group size.
+      </p>
+    </details>
+
+    <details class="help-item">
+      <summary>Which countries do you serve?</summary>
+      <p>
+        We work with travelers from all over the world including Europe, Asia,
+        America, Africa, and the Middle East.
+      </p>
+    </details>
+
+    <details class="help-item">
+      <summary>What payment methods do you accept?</summary>
+      <p>
+        We accept bank transfers, mobile money, and selected international payment
+        options depending on your country.
+      </p>
+    </details>
+
+    <details class="help-item">
+      <summary>Is Kenya safe for tourists?</summary>
+      <p>
+        Yes. Kenya is one of Africa’s top tourist destinations. We ensure your
+        safety through trusted guides, secure transport, and reliable partners.
+      </p>
+    </details>
+
+    <details class="help-item">
+      <summary>Can I cancel or reschedule my safari?</summary>
+      <p>
+        Yes. Our cancellation and rescheduling policies depend on the package and
+        time before travel. Contact us for specific details.
+      </p>
+    </details>
+
+    <details class="help-item">
+      <summary>Do you offer airport pickup?</summary>
+      <p>
+        Yes. Airport pickup and drop-off can be arranged as part of your safari
+        experience.
+      </p>
+    </details>
+
   </div>
 
-  <div class="help-box">
-    <h2>Pickup & Transport</h2>
-    <p>
-      Pickup is available from hotels, airports, and agreed locations.
-      Exact pickup time will be shared after booking.
-    </p>
-  </div>
+</section>
 
-  <div class="help-box">
-    <h2>What to Carry</h2>
-    <ul>
-      <li>Comfortable clothing</li>
-      <li>Sunscreen & hat</li>
-      <li>Camera & binoculars</li>
-      <li>Personal medication</li>
-      <li>Travel documents</li>
-    </ul>
-  </div>
-
-  <div class="help-box">
-    <h2>Safari Dos & Don’ts</h2>
-    <ul>
-      <li>Follow guide instructions at all times</li>
-      <li>Do not feed wild animals</li>
-      <li>Respect local communities</li>
-      <li>Do not litter</li>
-    </ul>
-  </div>
-
-  <div class="help-box">
-    <h2>Responsibility Notice</h2>
-    <p>
-      Salame Safari Tours is not responsible for loss of personal belongings,
-      injuries caused by negligence, or natural events beyond our control.
-      we strongly recommed you carry enough water,wear light cloths and carry less luggage
-      during  the safari.carru a mosquitoe repellent and first aid kit small just for your bag emergency.
-      carry hats and sunglasses,and sunscreen to protect you from the son wear comfortable shoes and 
-      carry a jumper incase it gets chilly in the evening.
-    </p>
-  </div>
-
+<!-- CTA -->
+<section class="help-cta">
+  <h2>Still Need Help?</h2>
+  <p>Our team is ready to assist you anytime</p>
+  <a href="contact.html" class="btn-primary">Contact Us</a>
 </section>
 
 <!-- FOOTER -->
@@ -88,5 +117,9 @@
   <p>© 2026 Salame Safari Tours. All Rights Reserved.</p>
 </footer>
 
+</div>
+
+<script src="js/lang.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
