@@ -1,103 +1,1526 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Salame Safari Tours | Experience the Soul of Kenya</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salame Safaris - Premium African Safari Adventures</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="../style.css">
+    :root {
+      --color-jungle: #2D4A3E;
+      --color-jungle-dark: #1a2e26;
+      --color-gold: #C67D3E;
+      --color-gold-dark: #a56632;
+      --color-cream: #FAF7F2;
+      --color-beige: #F2E8DA;
+      --color-text: #1f2937;
+      --color-text-muted: #6b7280;
+      --color-border: #e5e7eb;
+      --color-white: #ffffff;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --transition: all 0.3s ease;
+    }
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--color-cream);
+      color: var(--color-text);
+      font-family: 'Lato', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* ================= NAVIGATION ================= */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: var(--color-white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .header {
+      background: #fff;
+      border-bottom: 1px solid var(--color-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--color-jungle);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .logo-text span {
+      color: var(--color-gold);
+      font-weight: 400;
+    }
+
+    .nav nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav nav a {
+      text-decoration: none;
+      color: var(--color-text-muted);
+      font-size: 15px;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav nav a:hover,
+    .nav nav a.active {
+      color: var(--color-jungle);
+    }
+
+    /* Dropdown Styles */
+    .dropdown {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .dropdown-trigger {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      color: var(--color-text-muted);
+      font-size: 15px;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .dropdown-trigger:hover,
+    .dropdown-trigger.active {
+      color: var(--color-jungle);
+      font-weight: 600;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--color-white);
+      min-width: 180px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 10px 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 20px;
+      white-space: nowrap;
+      color: var(--color-text-muted);
+      font-size: 14px;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(0, 0, 0, 0.03);
+      color: var(--color-jungle);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-help {
+      color: var(--color-text);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      background: var(--color-jungle);
+      color: white;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-jungle-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 48px;
+      background: none;
+      border: none;
+      color: var(--color-white);
+      cursor: pointer;
+      line-height: 1;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--color-jungle);
+      cursor: pointer;
+    }
+
+    /* ================= HERO ================= */
+    .hero {
+      position: relative;
+      height: 90vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(45, 74, 62, 0.75), rgba(45, 74, 62, 0.55));
+    }
+
+    .item-caption {
+      color: var(--color-cream);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.3s ease;
+      padding: 0 16px;
+      text-align: center;
+      font-weight: 500;
+      font-size: 15px;
+    }
+
+    .gallery-item:hover .item-caption {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 900px;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+      z-index: 10;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(212, 165, 116, 0.3);
+      backdrop-filter: blur(10px);
+      padding: 10px 20px;
+      border-radius: 30px;
+      margin-bottom: 30px;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      animation: fadeIn 1s ease-out 0.3s both;
+    }
+
+    .pill::before {
+      content: '●';
+      color: var(--color-gold);
+      font-size: 10px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1.1;
+      margin-bottom: 25px;
+      animation: fadeInUp 1s ease-out 0.5s both;
+    }
+
+    .hero h1 span {
+      color: var(--color-gold);
+    }
+
+    .hero p {
+      font-size: clamp(15px, 2vw, 18px);
+      margin: 0 auto 40px;
+      opacity: 0.95;
+      max-width: 700px;
+      line-height: 1.7;
+      animation: fadeInUp 1s ease-out 0.7s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+      animation: fadeInUp 1s ease-out 0.9s both;
+    }
+
+    .btn-gold {
+      background: var(--color-gold);
+      padding: 16px 32px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--color-text);
+      font-weight: 700;
+      font-size: 16px;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-gold:hover {
+      background: var(--color-gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-outline {
+      border: 2px solid var(--color-gold);
+      padding: 14px 30px;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--color-gold);
+      font-weight: 600;
+      font-size: 16px;
+      background: transparent;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      background: rgba(245, 158, 11, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: clamp(30px, 8vw, 80px);
+      flex-wrap: wrap;
+      animation: fadeInUp 1s ease-out 1.1s both;
+    }
+
+    .hero-stats>div {
+      text-align: center;
+    }
+
+    .hero-stats strong {
+      color: var(--color-gold);
+      font-size: clamp(28px, 4vw, 36px);
+      display: block;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 5px;
+    }
+
+    .hero-stats span {
+      font-size: 14px;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    /* ================= SECTIONS ================= */
+    .section {
+      padding: 100px 70px;
+      text-align: center;
+    }
+
+    .section.soft {
+      background: var(--color-beige);
+    }
+
+    .section.dark {
+      background: var(--color-jungle);
+      color: white;
+    }
+
+    .section-label {
+      color: var(--emerald);
+      letter-spacing: 3px;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      display: block;
+    }
+
+    .section.dark .section-label {
+      color: var(--color-gold);
+    }
+
+    .section h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      margin: 0 0 20px 0;
+      color: var(--color-text);
+    }
+
+    .section.dark h2 {
+      color: white;
+    }
+
+    .section.dark h2 span {
+      color: var(--color-gold);
+    }
+
+    .subtitle {
+      max-width: 700px;
+      margin: 0 auto 70px;
+      color: var(--color-text-muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .section.dark .subtitle {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* ================= PACKAGES ================= */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 35px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--color-cream);
+      /* Using cream to match design background */
+      border-radius: 20px;
+      overflow: hidden;
+      text-align: left;
+      position: relative;
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-image {
+      position: relative;
+      overflow: hidden;
+      height: 280px;
+    }
+
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.1);
+    }
+
+    .price {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--emerald);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 15px;
+      font-weight: 600;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-body {
+      padding: 25px;
+    }
+
+    .card-body small {
+      color: var(--color-text-muted);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .card-body h3 {
+      font-size: 26px;
+      color: var(--color-text);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .card-body p {
+      color: var(--color-text-muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ================= SERVICES ================= */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .service {
+      background: var(--color-cream);
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: left;
+      transition: all 0.3s ease;
+    }
+
+    .service:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    .icon {
+      width: 60px;
+      height: 60px;
+      background: var(--emerald);
+      color: white;
+      border-radius: 12px;
+      /* Slightly squarer as per design look */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      transition: all 0.3s ease;
+    }
+
+    .service:hover .icon {
+      transform: scale(1.05);
+      background: #357a66;
+      /* darker emerald */
+    }
+
+    .service h4 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--color-text);
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+    }
+
+    .service p {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ================= TESTIMONIALS ================= */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .testimonial {
+      background: rgba(255, 255, 255, 0.05);
+      /* Subtle glassy overlay on dark green */
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      text-align: left;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .testimonial:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-5px);
+    }
+
+    .quote-icon {
+      font-size: 60px;
+      color: transparent;
+      -webkit-text-stroke: 1px var(--color-gold);
+      /* Outlined style */
+      opacity: 0.6;
+      margin-bottom: 5px;
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+
+    .stars {
+      color: var(--color-gold);
+      font-size: 18px;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 3px;
+    }
+
+    .testimonial-text {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 300;
+      min-height: 120px;
+      /* Force uniformity */
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--color-text);
+      /* Dark text on gold for contrast */
+      font-size: 18px;
+    }
+
+    .author-info h5 {
+      font-size: 16px;
+      margin-bottom: 3px;
+      font-weight: 600;
+    }
+
+    .author-info p {
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    /* ================= GALLERY ================= */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      cursor: pointer;
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.15);
+    }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 25px;
+      color: white;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* ================= CTA SECTION ================= */
+    .cta-section {
+      position: relative;
+      padding: 120px 70px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(45, 74, 62, 0.88), rgba(45, 74, 62, 0.82));
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 10;
+      max-width: 800px;
+      margin: 0 auto;
+      color: white;
+    }
+
+    .cta-content h2 {
+      font-size: clamp(36px, 5vw, 52px);
+      margin-bottom: 25px;
+      color: white;
+    }
+
+    .cta-content h2 span {
+      color: var(--color-gold);
+    }
+
+    .cta-content p {
+      font-size: 18px;
+      margin-bottom: 40px;
+      opacity: 0.95;
+      line-height: 1.8;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ================= MASTER FOOTER ================= */
+    .footer {
+      background: var(--color-jungle);
+      color: var(--color-white);
+      padding: 80px 24px 40px;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .footer-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .footer-column h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: var(--color-white);
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-brand .logo-circle {
+      width: 44px;
+      height: 44px;
+      background: var(--color-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-jungle);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .footer-brand .logo-text .logo-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-white);
+      line-height: 1;
+    }
+
+    .footer-brand .logo-text .logo-sub {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-description {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 25px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .social-icon:hover {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+      color: var(--color-jungle);
+      transform: translateY(-3px);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 15px;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-gold);
+      padding-left: 5px;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 15px;
+    }
+
+    .contact-icon {
+      color: var(--color-gold);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-bottom p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--color-gold);
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 1024px) {
+      .nav {
+        padding: 20px 40px;
+      }
+
+      .section {
+        padding: 80px 40px;
+      }
+
+      .footer {
+        padding: 60px 40px 30px;
+      }
+
+      .cta-section {
+        padding: 100px 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        padding: 15px 20px;
+      }
+
+      .nav nav {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--color-white);
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 20px;
+        transition: left 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav nav.active {
+        left: 0;
+      }
+
+      .nav nav a {
+        font-size: 18px;
+        padding: 10px 0;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+
+      .hero {
+        height: 80vh;
+        min-height: 500px;
+      }
+
+      .hero-content {
+        padding: 0 20px;
+      }
+
+      .gallery-grid {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+      }
+
+      .gallery-item {
+        height: 300px;
+        /* Fixed height for mobile items */
+        width: 100%;
+      }
+
+      .card-grid,
+      .service-grid,
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .gallery-item:first-child {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .footer {
+        padding: 50px 20px 20px;
+      }
+
+      .footer-content {
+        gap: 40px;
+      }
+
+      .cta-section {
+        padding: 80px 20px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .btn-gold,
+      .btn-outline {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text {
+        display: none;
+      }
+
+      .hero-stats {
+        gap: 30px;
+      }
+
+      .section h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ================= CINEMATIC VIDEO BACKGROUND ================= -->
-<div class="video-grid">
-  <video class="bg-video" autoplay muted loop playsinline src="pictures/videos/flamingo.mp4"></video>
-  <video class="bg-video" autoplay muted loop playsinline src="pictures/videos/midacreek.mp4"></video>
-  <video class="bg-video" autoplay muted loop playsinline src="pictures/videos/amboseli.mp4"></video>
-</div>
+  <!-- ================= NAVIGATION ================= -->
+  <header class="nav">
+    <a href="index.html" class="logo">
+      <img src="pictures/logo2.png" alt="Salame Safaris">
+      <span class="logo-text">Salame <span>Safaris</span></span>
+    </a>
 
-<!-- ================= DARK OVERLAY ================= -->
-<div class="overlay"></div>
+    <nav id="mainNav">
+      <a href="index.html" class="active">Home</a>
+      <a href="About.html">About</a>
+      <div class="dropdown">
+        <a href="Packages.html" class="dropdown-trigger">Safari ▾</a>
+        <div class="dropdown-content">
+          <a href="Packages.html">Packages</a>
+          <a href="Services.html">Services</a>
+        </div>
+      </div>
+      <a href="Gallery.html">Gallery</a>
+      <a href="blog.html">Blog</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar">
+    <div class="nav-actions">
+      <a href="Help.html" class="nav-help">Help</a>
+      <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+      <a href="Booking.html" class="btn-primary">Book Safari</a>
+    </div>
+  </header>
 
-  <div class="logo">
-    <img src="assets/images/logo.png" alt="Salame Safari Tours Logo">
-    <span class="company-name">Salame Safari Tours</span>
-  </div>
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="home">
+    <img src="Assests/hero-safari.jpg" class="hero-img" alt="African Savanna Sunset">
+    <div class="hero-overlay"></div>
 
-  <div class="nav-links">
-    <a href="index.html" class="nav-btn">Home</a>
-    <a href="about.html" class="nav-btn">About</a>
-    <a href="services.html" class="nav-btn">Services</a>
-    <a href="packages.html" class="nav-btn">Packages</a>
-    <a href="gallery.html" class="nav-btn">Gallery</a>
-    <a href="blog.html" class="nav-btn">Blog</a>
-    <a href="contacts.html" class="nav-btn">Contact</a>
-    <a href="helpcenter.html" class="nav-btn">Help Center</a>
-    <a href="bookings.html" class="nav-btn">Book Now</a>
-    <a href="testimonial.html" class="nav-btn">Testimonials</a>
-  </div>
+    <div class="hero-content">
+      <div class="pill">Premium Safari Experiences Since 1995</div>
 
-</nav>
+      <h1>
+        Discover the Magic of <br>
+        <span>African Wildlife</span>
+      </h1>
 
-<!-- ================= PAGE CONTENT ================= -->
-<main class="home-content">
+      <p>
+        Embark on an unforgettable journey through the heart of Africa.
+        Witness majestic wildlife, stunning landscapes, and create memories
+        that last a lifetime.
+      </p>
 
-  <h1>SALAME SAFARI TOURS</h1>
+      <div class="hero-actions">
+        <a href="#packages" class="btn-gold">Book Your Safari</a>
+        <a href="#packages" class="btn-outline">Explore Packages</a>
+      </div>
 
-  <!-- ORIGINAL PARAGRAPHS (UNCHANGED) -->
-  <p>
-    ABOUT US:
-     Your Companions in the Wild Heart of Africa
-    Kenya is more than just our workplace—it is our home, our heart, and our heritage.
-    At Salame Safari Tours, we believe a safari shouldn't just be a checklist of animals to see;
-    it should be a moment where time stands still.
+      <div class="hero-stats">
+        <div><strong>30+</strong><span>Years Experience</span></div>
+        <div><strong>50K+</strong><span>Happy Travelers</span></div>
+        <div><strong>100+</strong><span>Safari Routes</span></div>
+      </div>
+    </div>
+  </section>
 
-    We were born from a simple dream:
-    to share the raw, untouched beauty of our "backyard" with the world.
-    When you travel with us, you aren't just a booking. You are a guest of our land.
+  <!-- ================= PACKAGES ================= -->
+  <section class="section" id="packages">
+    <small class="section-label">Our Packages</small>
+    <h2>Featured Safari Adventures</h2>
+    <p class="subtitle">
+      Choose from our carefully curated safari packages, each designed
+      to give you an authentic African wilderness experience.
+    </p>
 
-    From the golden dust of Amboseli to the legendary plains of the Mara,
-    we take you deep into the savannah, sharing stories and revealing secret corners known only to those who live here.
-    We are a small, passionate team dedicated to showing you the Kenya we love:
-    the one that gets under your skin and stays in your soul forever.
-  </p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-image">
+          <img src="Assests/hero-safari.jpg" alt="Elephant in Serengeti">
+          <span class="price">$3,500</span>
+        </div>
+        <div class="card-body">
+          <small>📍 Tanzania</small>
+          <h3>Serengeti Migration</h3>
+          <p>Witness the greatest wildlife show on Earth - the annual wildebeest migration across the Serengeti plains.
+          </p>
+        </div>
+      </div>
 
-  <p>
-    Why Choose Salame?
-    Passion, Not Routine: We don't believe in "cookie-cutter" packages.
-    Every journey is tailor-made to be your unique adventure.
+      <div class="card">
+        <div class="card-image">
+          <img src="Assests/lion-portrait.jpg" alt="Lions in Masai Mara">
+          <span class="price">$2,800</span>
+        </div>
+        <div class="card-body">
+          <small>📍 Kenya</small>
+          <h3>Masai Mara Classic</h3>
+          <p>Experience the iconic African safari in Kenya's most famous wildlife reserve, home to the Big Five.</p>
+        </div>
+      </div>
 
-    Deep Roots: Our guides are part of our family.
-    They don't just find wildlife; they interpret the rhythm of the land.
+      <div class="card">
+        <div class="card-image">
+          <img src="Assests/giraffes-sunrise.jpg" alt="Giraffe at sunset">
+          <span class="price">$3,200</span>
+        </div>
+        <div class="card-body">
+          <small>📍 South Africa</small>
+          <h3>Kruger Adventure</h3>
+          <p>Explore one1 of Africa's largest game reserves with diverse ecosystems and incredible wildlife viewing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    Travel with Purpose: We protect what we love.
-    Every safari supports local communities and the wild spaces that make Kenya a magical place.
+  <!-- ================= SERVICES ================= -->
+  <section class="section soft" id="services">
+    <small class="section-label">What We Offer</small>
+    <h2>Premium Safari Services</h2>
+    <p class="subtitle">
+      We provide comprehensive safari services to ensure your African adventure
+      is comfortable, safe, and unforgettable.
+    </p>
 
-    Our Mottos
-    Salame Safari Tours: Kenya, through the eyes of a friend.
+    <div class="service-grid">
+      <div class="service">
+        <div class="icon">🔭</div>
+        <h4>Game Drives</h4>
+        <p>Expert-guided game drives in open 4x4 vehicles to spot the Big Five and other wildlife in their natural
+          habitat.</p>
+      </div>
 
-    Not just a trip, but a homecoming.
+      <div class="service">
+        <div class="icon">⛺</div>
+        <h4>Luxury Camps</h4>
+        <p>Stay in premium tented camps and lodges with modern amenities amidst the wilderness.</p>
+      </div>
 
-    Wild Heart, Local Soul.
-  </p>
+      <div class="service">
+        <div class="icon">📷</div>
+        <h4>Photography Tours</h4>
+        <p>Specialized photography safaris with professional guides for the perfect wildlife shots.</p>
+      </div>
 
-</main>
+      <div class="service">
+        <div class="icon">🚙</div>
+        <h4>Private Safaris</h4>
+        <p>Fully customized private safari experiences tailored to your preferences and schedule.</p>
+      </div>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <p>© 2026 Salame Safari Tours. All Rights Reserved.</p>
-</footer>
+      <div class="service">
+        <div class="icon">🍽️</div>
+        <h4>Gourmet Dining</h4>
+        <p>Freshly prepared meals by expert chefs featuring local and international cuisine.</p>
+      </div>
 
-<!-- ================= JS ================= -->
-<script src="js/main.js"></script>
-<script src="js/lang.js"></script>
+      <div class="service">
+        <div class="icon">🛡️</div>
+        <h4>Safety First</h4>
+        <p>Trained professional guides and 24/7 emergency support for your peace of mind.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TESTIMONIALS ================= -->
+  <section class="section dark" id="testimonials">
+    <small class="section-label">Testimonials</small>
+    <h2>Stories from Our <span>Travelers</span></h2>
+    <p class="subtitle">
+      Don't just take our word for it. Hear from adventurers who have experienced the magic of Africa with us.
+    </p>
+
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="quote-icon">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">
+          "An absolutely magical experience! The attention to detail, the incredible wildlife encounters, and the warmth
+          of our guides made this the trip of a lifetime."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">SM</div>
+          <div class="author-info">
+            <h5>Sarah Mitchell</h5>
+            <p>Travel Blogger<br>New York, USA</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="quote-icon">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">
+          "As a photographer, I've been on many safaris, but Savanna Safari exceeded all expectations. The guides knew
+          exactly where to find the best wildlife moments."
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JA</div>
+          <div class="author-info">
+            <h5>James Anderson</h5>
+            <p>Wildlife Photographer<br>London, UK</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="quote-icon">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">
+          "From the luxurious accommodations to the breathtaking sunsets over the savanna, every moment was perfect.
+          Can't wait to book my next adventure!"
+        </p>
+        <div class="testimonial-author">
+          <div class="author-avatar">ER</div>
+          <div class="author-info">
+            <h5>Elena Rodriguez</h5>
+            <p>Adventure Traveler<br>Madrid, Spain</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY ================= -->
+  <section class="section" id="gallery">
+    <small class="section-label" style="color: var(--color-gold);">Gallery</small>
+    <h2>Captured Moments</h2>
+    <p class="subtitle">
+      A glimpse into the extraordinary experiences awaiting you on our safari adventures.
+    </p>
+
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="Assests/safari-lodge.jpg" alt="Safari Lodge Interior">
+        <div class="gallery-overlay">
+          <h4>Luxury Safari Lodges</h4>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="Assests/giraffes-sunrise.jpg" alt="Giraffes at sunset">
+        <div class="gallery-overlay">
+          <h4>Sunset Horizons</h4>
+        </div>
+      </div>
+      <div class="gallery-item">
+        <img src="Assests/lion-portrait.jpg" alt="Lion Portrait">
+        <div class="gallery-overlay">
+          <h4>Majestic Wildlife</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA SECTION ================= -->
+  <section class="cta-section" id="book">
+    <img src="Assests/hero-safari.jpg" class="cta-bg" alt="African landscape">
+    <div class="cta-overlay"></div>
+
+    <div class="cta-content">
+      <h2>Ready to Begin Your <span>Adventure?</span></h2>
+      <p>
+        Join thousands of satisfied travelers who have discovered the magic of African
+        wildlife with us. Your unforgettable safari experience awaits.
+      </p>
+      <div class="cta-actions">
+        <a href="#contact" class="btn-gold">Book Your Safari Now</a>
+        <a href="#contact" class="btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <!-- Column 1: Brand -->
+      <div class="footer-column footer-brand">
+        <a href="index.html" class="logo">
+          <img src="pictures/logo2.png" alt="Salame Safaris">
+          <span class="logo-text" style="color: white;">Salame <span
+              style="color: var(--color-gold);">Safaris</span></span>
+        </a>
+        <p class="footer-description">
+          Experience the magic of African wildlife with our premium safari adventures. Creating unforgettable memories
+          since 1995.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Twitter">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="YouTube">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="Packages.html">Safari Packages</a></li>
+          <li><a href="Services.html">Our Services</a></li>
+          <li><a href="Gallery.html">Photo Gallery</a></li>
+          <li><a href="blog.html">Travel Blog</a></li>
+          <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Destinations -->
+      <div class="footer-column">
+        <h4>Destinations</h4>
+        <ul class="footer-links">
+          <li><a href="#">Serengeti NP</a></li>
+          <li><a href="#">Masai Mara</a></li>
+          <li><a href="#">Kruger NP</a></li>
+          <li><a href="#">Okavango Delta</a></li>
+          <li><a href="#">Ngorongoro Crater</a></li>
+          <li><a href="#">Victoria Falls</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact -->
+      <div class="footer-column">
+        <h4>Contact Us</h4>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>123 Safari Lane, Arusha, Tanzania</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <span>+255 123 456 789</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <span>info@salamesafaris.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>© 2025 Salame Safaris. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="Help.html">Help Center</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mainNav');
+      nav.classList.toggle('active');
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+          // Close mobile menu if open
+          document.getElementById('mainNav').classList.remove('active');
+        }
+      });
+    });
+
+    // Add scroll effect to nav
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.nav');
+      const currentScroll = window.pageYOffset;
+
+      if (currentScroll > 100) {
+        nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+      } else {
+        nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+      }
+
+      lastScroll = currentScroll;
+    });
+  </script>
 
 </body>
+
 </html>

@@ -1,96 +1,1158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us | Salame Safari Tours</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Salame Safaris</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
 
-  <!-- MAIN CSS -->
-  <link rel="stylesheet" href="../style.css">
+    :root {
+      --color-jungle: #2D4A3E;
+      --color-jungle-dark: #1a2e26;
+      --color-gold: #C67D3E;
+      --color-gold-dark: #a56632;
+      --color-cream: #FAF7F2;
+      --color-beige: #F2E8DA;
+      --color-text: #1f2937;
+      --color-text-muted: #6b7280;
+      --color-border: #e5e7eb;
+      --color-white: #ffffff;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --transition: all 0.3s ease;
+    }
 
-  <!-- Font Awesome (optional but consistent) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--color-cream);
+      color: var(--color-text);
+      font-family: 'Lato', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* ================= STANDARD NAVIGATION ================= */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: var(--color-white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--color-jungle);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .logo-text span {
+      color: var(--color-gold);
+      font-weight: 400;
+    }
+
+    .nav nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav nav a {
+      text-decoration: none;
+      color: var(--color-text-muted);
+      font-size: 15px;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav nav a:hover,
+    .nav nav a.active {
+      color: var(--color-jungle);
+      font-weight: 600;
+      background: none;
+      /* Reset background */
+    }
+
+    /* Dropdown Styles */
+    .dropdown {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .dropdown-trigger {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      color: var(--color-text-muted);
+      font-size: 15px;
+      font-weight: 500;
+      transition: var(--transition);
+      text-decoration: none;
+      padding: 0;
+    }
+
+    .dropdown-trigger:hover,
+    .dropdown-trigger.active {
+      color: var(--color-jungle);
+      font-weight: 600;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--color-white);
+      min-width: 180px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 10px 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 20px;
+      white-space: nowrap;
+      color: var(--color-text-muted);
+      font-size: 14px;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(0, 0, 0, 0.03);
+      color: var(--color-jungle);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-help {
+      color: var(--color-jungle);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--color-jungle);
+      color: var(--color-white);
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-jungle-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(45, 74, 62, 0.3);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--color-jungle);
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        padding: 15px 20px;
+      }
+
+      .nav nav {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--color-white);
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 20px;
+        transition: left 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav nav.active {
+        left: 0;
+      }
+
+      .nav nav a {
+        font-size: 18px;
+        padding: 10px 0;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .dropdown {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+      }
+
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+        transform: none;
+        display: none;
+        padding-left: 20px;
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .dropdown.active .dropdown-content {
+        display: block;
+      }
+    }
+
+    /* ================= HERO SECTION ================= */
+    .hero {
+      position: relative;
+      height: 80vh;
+      /* Increased height for more impact */
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: var(--color-text);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 1;
+      /* clear image */
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+      /* More neutral, less green tint to let sunset colors shine */
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 900px;
+      text-align: center;
+      color: var(--color-white);
+      padding: 0 30px;
+      margin-top: 60px;
+      /* Slight offset */
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--color-gold);
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 4px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 72px);
+      /* Larger, more dramatic */
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
+    .hero-description {
+      font-size: 20px;
+      line-height: 1.6;
+      opacity: 0.9;
+      font-weight: 300;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ================= STORY SECTION ================= */
+    .story {
+      padding: 120px 80px;
+      /* More white space */
+      background: var(--color-white);
+      /* Cleaner background */
+    }
+
+    .story-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      /* Larger gap */
+      align-items: center;
+    }
+
+    .story-text .eyebrow {
+      color: var(--color-gold);
+      margin-bottom: 20px;
+    }
+
+    .story-text h2 {
+      font-size: clamp(40px, 5vw, 56px);
+      color: var(--color-jungle);
+      margin-bottom: 40px;
+      line-height: 1.1;
+    }
+
+    .story-text h2 .highlight {
+      color: var(--color-jungle);
+      font-style: italic;
+      /* Design touch */
+    }
+
+    .story-text p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--color-text-muted);
+      margin-bottom: 28px;
+    }
+
+    .story-image {
+      position: relative;
+    }
+
+    .story-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      /* Sharper, more elegant corners or slightly rounded */
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      display: block;
+    }
+
+    .experience-badge {
+      position: absolute;
+      bottom: -40px;
+      left: -40px;
+      background: var(--color-jungle);
+      /* Changed to dark green for contrast */
+      padding: 40px;
+      border-radius: 8px;
+      /* Matching the image border radius style more */
+      color: var(--color-white);
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    }
+
+    .experience-badge strong {
+      display: block;
+      font-size: 36px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 4px;
+    }
+
+    .experience-badge span {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    /* ================= STATS SECTION ================= */
+    .stats {
+      background: linear-gradient(135deg, var(--color-jungle), var(--color-jungle-dark));
+      /* Deeper, richer gradient */
+      color: var(--color-white);
+      padding: 100px 80px;
+    }
+
+    .stats-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 60px;
+      text-align: center;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .stat-item::after {
+      content: '';
+      position: absolute;
+      right: -30px;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-item:last-child::after {
+      display: none;
+    }
+
+    .stat-icon {
+      font-size: 42px;
+      color: var(--color-gold);
+      margin-bottom: 24px;
+    }
+
+    .stat-value {
+      font-size: clamp(42px, 5vw, 56px);
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      opacity: 0.8;
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ================= VALUES SECTION ================= */
+    .values {
+      padding: 140px 80px;
+      background: var(--color-white);
+    }
+
+    .values-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-header .eyebrow {
+      color: var(--color-gold);
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(36px, 5vw, 48px);
+      color: var(--color-jungle);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
+
+    .value-card {
+      background: var(--color-cream);
+      padding: 50px 40px;
+      border-radius: 8px;
+      /* Consistent with new image radius */
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border-color: transparent;
+    }
+
+    .value-card h3 {
+      font-size: 22px;
+      color: var(--color-jungle);
+      margin-bottom: 20px;
+    }
+
+    .value-card p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--color-text-muted);
+    }
+
+    /* ================= TEAM SECTION ================= */
+    .team {
+      padding: 120px 80px;
+      background: var(--color-cream);
+    }
+
+    .team-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 60px;
+      text-align: center;
+    }
+
+    .team-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+
+    .team-avatar {
+      width: 130px;
+      /* Included size */
+      height: 130px;
+      border-radius: 50%;
+      background: var(--color-jungle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      font-size: 40px;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-member h3 {
+      font-size: 24px;
+      color: var(--color-jungle);
+      margin-bottom: 8px;
+    }
+
+    /* ================= MASTER FOOTER ================= */
+    .footer {
+      background: var(--color-jungle);
+      color: var(--color-white);
+      padding: 80px 24px 40px;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .footer-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .footer-column h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: var(--color-white);
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-brand .logo-circle {
+      width: 44px;
+      height: 44px;
+      background: var(--color-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-jungle);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .footer-brand .logo-text .logo-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-white);
+      line-height: 1;
+    }
+
+    .footer-brand .logo-text .logo-sub {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-description {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 25px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .social-icon:hover {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+      color: var(--color-jungle);
+      transform: translateY(-3px);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 15px;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-gold);
+      padding-left: 5px;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 15px;
+    }
+
+    .contact-icon {
+      color: var(--color-gold);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-bottom p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--color-gold);
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-bottom p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--color-gold);
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 1024px) {
+
+      .nav,
+      .story,
+      .stats,
+      .values,
+      .team,
+      .footer {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+
+      .story-container {
+        gap: 50px;
+      }
+
+      .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        padding: 20px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .story,
+      .stats,
+      .values,
+      .team,
+      .footer {
+        padding: 60px 20px;
+      }
+
+      .story-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .experience-badge {
+        position: static;
+        margin-top: 20px;
+        display: inline-block;
+      }
+
+      .stats-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .values-grid,
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo-text {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar">
-  <div class="logo">
-    <img src="pictures/logo2.png" alt="Salame Safari Tours Logo">
-    <span class="company-name">Salame Safari Tours</span>
-  </div>
+  <!-- ================= NAVIGATION ================= -->
+  <header class="nav">
+    <a href="index.html" class="logo">
+      <img src="pictures/logo2.png" alt="Salame Safaris">
+      <span class="logo-text">Salame <span>Safaris</span></span>
+    </a>
 
-  <div class="nav-links">
-    <a href="index.html" class="nav-btn">Home</a>
-    <a href="about.html" class="nav-btn active">About</a>
-    <a href="services.html" class="nav-btn">Services</a>
-    <a href="packages.html" class="nav-btn">Packages</a>
-    <a href="gallery.html" class="nav-btn">Gallery</a>
-    <a href="blog.html" class="nav-btn">Blog</a>
-    <a href="contacts.html" class="nav-btn">Contact</a>
-    <a href="helpcenter.html" class="nav-btn">Help Center</a>
-  </div>
-</nav>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="About.html" class="active">About</a>
+      <div class="dropdown">
+        <a href="Packages.html" class="dropdown-trigger">Safari ▾</a>
+        <div class="dropdown-content">
+          <a href="Packages.html">Packages</a>
+          <a href="Services.html">Services</a>
+        </div>
+      </div>
+      <a href="Gallery.html">Gallery</a>
+      <a href="blog.html">Blog</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
 
-<!-- ================= ABOUT CONTENT ================= -->
-<main class="about-page">
+    <div class="nav-actions">
+      <a href="Help.html" class="nav-help">Help</a>
+      <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+      <a href="Booking.html" class="btn-primary">Book Safari</a>
+    </div>
+  </header>
 
-  <!-- ABOUT US -->
-  <section class="glass-section">
-    <h2>About Salame Safari Tours</h2>
+  <!-- ================= HERO SECTION ================= -->
+  <section class="hero">
+    <img src="Assests/giraffes-sunrise.jpg" class="hero-bg" alt="African Wildlife">
+    <div class="hero-overlay"></div>
 
-    <h3>Who We Are</h3>
-    <p class="arial">
-      Salame Safari Tours is a Kenyan-owned tour company offering authentic safari experiences.
-    </p>
-  </section>
-
-  <!-- OUR MISSION WITH BACKGROUND IMAGE -->
-  <section class="glass-section with-bg">
-    <h3>Our Mission</h3>
-    <p class="times">
-      To deliver unforgettable safari and cultural experiences.
-    </p>
-  </section>
-
-  <!-- OUR VISION -->
-  <section class="glass-section">
-    <h3>Our Vision</h3>
-    <p class="times">
-      To be the most trusted safari brand in East Africa.
-    </p>
-  </section>
-
-  <!-- VALUES IN 3D CARDS -->
-  <section class="values-section">
-    <h3>Our Values</h3>
-    <div class="values-grid">
-      <div class="value-card">Authenticity</div>
-      <div class="value-card">Sustainability</div>
-      <div class="value-card">Customer Excellence</div>
+    <div class="hero-content">
+      <span class="eyebrow">ABOUT US</span>
+      <h1>Our Story</h1>
+      <p class="hero-description">Three decades of creating unforgettable African safari experiences</p>
     </div>
   </section>
 
-  <!-- CEO SECTION -->
-  <section class="glass-section ceo-section">
-    <div class="ceo">
-      <img src="assets/images/ceo.jpg" alt="CEO">
-      <p class="times">
-        Our founder and CEO has years of experience guiding travelers across Kenya, creating meaningful memories.
-      </p>
+  <!-- ================= STORY SECTION ================= -->
+  <section class="story">
+    <div class="story-container">
+      <div class="story-text">
+        <span class="eyebrow">OUR JOURNEY</span>
+        <h2>A Passion for African <span class="highlight">Wildlife</span></h2>
+
+        <p>
+          Founded in 1995, Salame Safaris began with a simple dream:
+          to share the breathtaking beauty of African wildlife with the world while
+          supporting conservation efforts and local communities.
+        </p>
+
+        <p>
+          What started as a small family operation has grown into one of Africa's
+          most trusted safari companies. Our commitment to sustainable tourism,
+          authentic experiences, and exceptional service has earned us the trust
+          of over 50,000 travelers from around the globe.
+        </p>
+
+        <p>
+          Today, we continue to lead the way in responsible wildlife tourism,
+          partnering with conservation organizations and employing local guides
+          who bring unparalleled knowledge and passion to every adventure.
+        </p>
+      </div>
+
+      <div class="story-image">
+        <img src="Assests/safari-lodge.jpg" alt="Safari Lodge">
+        <div class="experience-badge">
+          <strong>30+</strong>
+          <span>Years of Excellence</span>
+        </div>
+      </div>
     </div>
   </section>
 
-</main>
+  <!-- ================= STATS SECTION ================= -->
+  <section class="stats">
+    <div class="stats-container">
+      <div class="stat-item">
+        <div class="stat-icon">🏆</div>
+        <div class="stat-value">30+</div>
+        <div class="stat-label">Years of Excellence</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">👥</div>
+        <div class="stat-value">50,000+</div>
+        <div class="stat-label">Happy Travelers</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">🌍</div>
+        <div class="stat-value">15+</div>
+        <div class="stat-label">Destinations</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon">💚</div>
+        <div class="stat-value">98%</div>
+        <div class="stat-label">Satisfaction Rate</div>
+      </div>
+    </div>
+  </section>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <p>© 2026 Salame Safari Tours. All Rights Reserved.</p>
-</footer>
+  <!-- ================= VALUES SECTION ================= -->
+  <section class="values">
+    <div class="values-container">
+      <div class="section-header">
+        <span class="eyebrow">OUR VALUES</span>
+        <h2>What Drives Us</h2>
+      </div>
 
-<!-- ================= JS ================= -->
-<script src="js/main.js"></script>
-<script src="js/lang.js"></script>
+      <div class="values-grid">
+        <div class="value-card">
+          <h3>Conservation First</h3>
+          <p>
+            We actively support wildlife conservation efforts and sustainable tourism
+            practices that protect Africa's precious ecosystems.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <h3>Authentic Experiences</h3>
+          <p>
+            Every safari is crafted to provide genuine connections with nature,
+            wildlife, and local cultures.
+          </p>
+        </div>
+
+        <div class="value-card">
+          <h3>Community Impact</h3>
+          <p>
+            We employ local guides, support community projects, and ensure tourism
+            benefits the people of Africa.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TEAM SECTION ================= -->
+  <section class="team">
+    <div class="team-container">
+      <div class="section-header">
+        <span class="eyebrow">OUR TEAM</span>
+        <h2>Meet Our Experts</h2>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="team-avatar">DK</div>
+          <h3>David Kimani</h3>
+          <span class="team-role">Founder & Lead Guide</span>
+          <p>Born and raised in the Kenyan wilderness, David brings over 25 years of safari expertise.</p>
+        </div>
+
+        <div class="team-member">
+          <div class="team-avatar">GO</div>
+          <h3>Grace Okonkwo</h3>
+          <span class="team-role">Operations Director</span>
+          <p>Grace ensures every safari runs smoothly, from logistics to accommodations.</p>
+        </div>
+
+        <div class="team-member">
+          <div class="team-avatar">JM</div>
+          <h3>James Mwangi</h3>
+          <span class="team-role">Wildlife Expert</span>
+          <p>A trained conservationist with deep knowledge of African ecosystems and wildlife behavior.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <!-- Column 1: Brand -->
+      <div class="footer-column footer-brand">
+        <a href="index.html" class="logo">
+          <img src="pictures/logo2.png" alt="Salame Safaris">
+          <span class="logo-text">Salame <span>Safaris</span></span>
+        </a>
+        <p class="footer-description">
+          Experience the magic of African wildlife with our premium safari adventures. Creating unforgettable memories
+          since 1995.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Twitter">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="YouTube">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="Packages.html">Safari Packages</a></li>
+          <li><a href="Services.html">Our Services</a></li>
+          <li><a href="Gallery.html">Photo Gallery</a></li>
+          <li><a href="blog.html">Travel Blog</a></li>
+          <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Destinations -->
+      <div class="footer-column">
+        <h4>Destinations</h4>
+        <ul class="footer-links">
+          <li><a href="#">Serengeti NP</a></li>
+          <li><a href="#">Masai Mara</a></li>
+          <li><a href="#">Kruger NP</a></li>
+          <li><a href="#">Okavango Delta</a></li>
+          <li><a href="#">Ngorongoro Crater</a></li>
+          <li><a href="#">Victoria Falls</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact -->
+      <div class="footer-column">
+        <h4>Contact Us</h4>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>123 Safari Lane, Arusha, Tanzania</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <span>+255 123 456 789</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <span>info@salamesafaris.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>© 2025 Salame Safaris. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="Help.html">Help Center</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
+
 </html>

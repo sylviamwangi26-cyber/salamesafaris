@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Salame Safaris</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        :root {
+            --color-jungle: #2D4A3E;
+            --color-jungle-dark: #1a2e26;
+            --color-gold: #C67D3E;
+            --color-gold-dark: #a56632;
+            --color-cream: #FAF7F2;
+            --color-beige: #F2E8DA;
+            --color-text: #1f2937;
+            --color-text-muted: #6b7280;
+            --color-border: #e5e7eb;
+            --color-white: #ffffff;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-full: 9999px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: var(--color-cream);
+            color: var(--color-text);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* HEADER */
+        .header {
+            background: white;
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 60px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 44px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--color-jungle);
+            letter-spacing: -0.5px;
+            line-height: 1;
+        }
+
+        .logo-text span {
+            color: var(--color-gold);
+            font-weight: 400;
+        }
+
+        .logo-sub {
+            font-size: 14px;
+            color: var(--color-muted);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--color-text-muted);
+            font-size: 15px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            color: var(--color-jungle);
+        }
+
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-trigger {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: -20px;
+            background-color: white;
+            min-width: 180px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-radius: 12px;
+            padding: 10px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+
+        .dropdown:hover .dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-content a {
+            padding: 12px 20px;
+            display: block;
+            color: #6B7565;
+            font-weight: 400;
+        }
+
+        .dropdown-content a:hover {
+            background-color: var(--color-beige);
+            color: var(--color-jungle);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .help-link {
+            color: #6B7565;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .help-link.active {
+            color: var(--color-jungle);
+            font-weight: 600;
+        }
+
+        .btn-book {
+            background: var(--color-jungle);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn-book:hover {
+            background: var(--color-jungle-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Generic Button Classes */
+        .btn-safari {
+            background: var(--color-jungle);
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-safari:hover {
+            background: var(--color-jungle-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-gold {
+            background: var(--color-gold);
+            color: var(--color-text);
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-gold:hover {
+            background: var(--color-gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(245, 158, 11, 0.2);
+        }
+
+        .btn-outlined {
+            background: transparent;
+            color: var(--color-jungle);
+            border: 2px solid var(--color-jungle);
+            padding: 10px 22px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .btn-outlined:hover {
+            background: var(--color-jungle);
+            color: white;
+        }
+
+        /* HERO */
+        .hero {
+            background: var(--color-jungle);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--color-gold);
+            margin-bottom: 16px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .search-wrapper {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-muted);
+            pointer-events: none;
+        }
+
+        .search-wrapper input {
+            width: 100%;
+            padding: 18px 24px 18px 56px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            font-family: 'Lato', sans-serif;
+        }
+
+        .search-wrapper input:focus {
+            outline: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-gold);
+        }
+
+        .search-wrapper {
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            pointer-events: none;
+        }
+
+        .search-wrapper input {
+            width: 100%;
+            padding: 1rem 1.25rem 1rem 3.25rem;
+            border-radius: 12px;
+            border: none;
+            font-size: 1rem;
+            background: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .search-wrapper input:focus {
+            outline: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-gold);
+        }
+
+        .search-wrapper input::placeholder {
+            color: #9ca3af;
+        }
+
+        /* FAQ SECTION */
+        .faqs {
+            padding: 80px 0;
+            background: var(--color-beige);
+        }
+
+        .category {
+            margin-bottom: 48px;
+        }
+
+        .category h2 {
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: var(--color-jungle);
+        }
+
+        .faq-item {
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-md);
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(45, 74, 62, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--color-jungle);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            color: var(--color-gold);
+        }
+
+        .faq-question span {
+            font-size: 20px;
+            color: var(--color-muted);
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 24px 20px;
+            color: var(--color-muted);
+            line-height: 1.7;
+            display: none;
+            font-size: 15px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        .no-results p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .btn-clear {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--color-jungle);
+            background: white;
+            color: var(--color-jungle);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-clear:hover {
+            background: var(--color-jungle);
+            color: white;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* SUPPORT SECTION */
+        .support {
+            background: var(--color-beige);
+            padding: 80px 0;
+        }
+
+        .support-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .support-header h2 {
+            font-size: 36px;
+            margin-bottom: 12px;
+            color: var(--color-jungle);
+        }
+
+        .support-header p {
+            font-size: clamp(1rem, 2vw, 1.1rem);
+            color: var(--color-muted);
+            font-family: 'Lato', sans-serif;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .support-card {
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border: 1px solid var(--color-border);
+        }
+
+        .support-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .support-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 24px;
+            background: var(--color-beige);
+            color: var(--color-jungle);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .support-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: var(--color-jungle);
+        }
+
+        .support-card p {
+            color: var(--color-muted);
+            margin-bottom: 16px;
+            font-size: 15px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .support-card a {
+            color: var(--color-gold);
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 15px;
+        }
+
+        .support-card a:hover {
+            color: var(--color-jungle);
+        }
+
+        /* ================= MASTER FOOTER ================= */
+        .footer {
+            background: var(--color-jungle);
+            color: var(--color-white);
+            padding: 80px 24px 40px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-column h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--color-white);
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-brand .logo-circle {
+            width: 44px;
+            height: 44px;
+            background: var(--color-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-jungle);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        .footer-brand .logo-text .logo-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-white);
+            line-height: 1;
+        }
+
+        .footer-brand .logo-text .logo-sub {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-description {
+            font-size: 15px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-jungle);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--color-gold);
+            padding-left: 5px;
+        }
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+        }
+
+        .contact-icon {
+            color: var(--color-gold);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .footer-bottom {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        .footer-bottom p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--color-gold);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="pictures/logo2.png" alt="Salame Safaris">
+                <span class="logo-text">Salame <span>Safaris</span></span>
+            </a>
+
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="About.html">About</a>
+                <div class="dropdown">
+                    <a href="Packages.html" class="dropdown-trigger">Safari ▾</a>
+                    <div class="dropdown-content">
+                        <a href="Packages.html">Packages</a>
+                        <a href="Services.html">Services</a>
+                    </div>
+                </div>
+                <a href="Gallery.html">Gallery</a>
+                <a href="blog.html">Blog</a>
+                <a href="Contact.html">Contact</a>
+            </nav>
+
+            <div class="header-actions">
+                <a href="Help.html" class="help-link active">Help</a>
+                <a href="Booking.html" class="btn-book">Book Safari</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">HELP CENTER</span>
+                <h1>How Can We Help?</h1>
+                <p>Find answers to common questions about our safari experiences</p>
+                <div class="search-wrapper">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M9 17A8 8 0 1 0 9 1a8 8 0 0 0 0 16zM18 18l-4-4" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                    </svg>
+                    <input id="searchInput" type="text" placeholder="Search for answers..." />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQS -->
+    <section class="faqs">
+        <div class="container">
+            <div id="faqContainer"></div>
+            <div id="noResults" class="no-results hidden">
+                <p>No results found for "<span id="searchTermText"></span>"</p>
+                <button id="clearSearch" class="btn-clear">Clear Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUPPORT -->
+    <section class="support">
+        <div class="container">
+            <div class="support-header">
+                <h2>Still Need Help?</h2>
+                <p>Our safari experts are here to assist you with any questions</p>
+            </div>
+            <div class="support-grid">
+                <!-- Email Support -->
+                <div class="support-card">
+                    <div class="support-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Email Support</h3>
+                    <p>Get a response within 24 hours</p>
+                    <a href="mailto:support@savannasafari.com">support@savannasafari.com</a>
+                </div>
+                <!-- Phone Support -->
+                <div class="support-card">
+                    <div class="support-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3>Phone Support</h3>
+                    <p>Mon-Sat, 8AM-6PM EAT</p>
+                    <a href="tel:+255123456789">+255 123 456 789</a>
+                </div>
+                <!-- Live Chat -->
+                <div class="support-card">
+                    <div class="support-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                    </div>
+                    <h3>Live Chat</h3>
+                    <p>Chat with our team</p>
+                    <a href="Contact.html">Start a Chat</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column footer-brand">
+                    <a href="index.html" class="logo">
+                        <img src="pictures/logo2.png" alt="Salame Safaris">
+                        <span class="logo-text" style="color: white;">Salame <span
+                                style="color: var(--color-gold);">Safaris</span></span>
+                    </a>
+                    <p style="margin-top:20px; color:rgba(255,255,255,0.8)">Experience the magic of African wildlife
+                        with our premium safari adventures. Creating
+                        unforgettable memories since 1995.</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="About.html">About Us</a>
+                    <a href="Packages.html">Safari Packages</a>
+                    <a href="Services.html">Our Services</a>
+                    <a href="Gallery.html">Photo Gallery</a>
+                    <a href="blog.html">Travel Blog</a>
+                    <a href="Packages.html">Book Now</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Destinations</h4>
+                    <a href="#">Serengeti National Park</a>
+                    <a href="#">Masai Mara Reserve</a>
+                    <a href="#">Kruger National Park</a>
+                    <a href="#">Okavango Delta</a>
+                    <a href="#">Ngorongoro Crater</a>
+                    <a href="#">Victoria Falls</a>
+                </div>
+
+                <div class="footer-links">
+                    <h4>Contact Us</h4>
+                    <a href="Contact.html">Get in Touch</a>
+                    <a href="mailto:info@salamesafaris.com">info@salamesafaris.com</a>
+                    <a href="tel:+255123456789">+255 123 456 789</a>
+                    <p style="font-size: 14px; opacity: 0.8; margin-top: 10px;">123 Safari Lane, Arusha, Tanzania</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Salame Safaris. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="Help.html">Help Center</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Data based on the screenshots
+        const faqs = [
+            {
+                category: "Booking & Reservations",
+                questions: [
+                    {
+                        q: "How far in advance should I book my safari?",
+                        a: "We recommend booking at least 3-6 months in advance, especially for peak season (June-October and December-March). For group bookings or special events, booking 6-12 months ahead is advisable."
+                    },
+                    {
+                        q: "What is your cancellation policy?",
+                        a: "Cancellations made 60+ days before departure receive a full refund minus a $100 admin fee. 30-59 days: 50% refund. Less than 30 days: no refund. We strongly recommend travel insurance."
+                    },
+                    {
+                        q: "What payment methods do you accept?",
+                        a: "We accept credit cards (Visa, MasterCard, American Express), bank transfers, and PayPal. A 30% deposit is required to confirm your booking, with the balance due 60 days before departure."
+                    }
+                ]
+            },
+            {
+                category: "Safari Experience",
+                questions: [
+                    {
+                        q: "What should I pack for a safari?",
+                        a: "Pack neutral-colored clothing (khaki, olive, beige), comfortable walking shoes, a hat, sunglasses, sunscreen, insect repellent, binoculars, camera equipment, and any personal medications. We provide a detailed packing list upon booking."
+                    },
+                    {
+                        q: "Is it safe to go on safari?",
+                        a: "Yes, safaris are very safe when conducted by professional guides. Our guides are highly trained, carry first aid kits, and maintain constant radio contact. We have emergency evacuation insurance for all guests."
+                    },
+                    {
+                        q: "What is the best time of year to visit?",
+                        a: "The dry season (June-October) offers excellent wildlife viewing as animals gather around water sources. The Great Migration is typically June-September in Kenya and December-March in Tanzania. The green season (November-May) offers lush landscapes and fewer crowds."
+                    }
+                ]
+            },
+            {
+                category: "Health & Safety",
+                questions: [
+                    {
+                        q: "Do I need vaccinations for travel to Africa?",
+                        a: "Yellow fever vaccination is required for some countries. We also recommend Hepatitis A & B, Typhoid, and keeping routine vaccinations up to date. Consult your travel doctor 6-8 weeks before departure."
+                    },
+                    {
+                        q: "Is malaria a concern?",
+                        a: "Many safari destinations are in malaria zones. We recommend consulting with a travel health specialist about antimalarial medication. Our camps also provide mosquito nets and repellents."
+                    },
+                    {
+                        q: "What emergency support do you provide?",
+                        a: "All our safaris include Flying Doctors emergency evacuation insurance. Our guides carry satellite phones and first aid equipment. We have 24/7 emergency support available throughout your trip."
+                    }
+                ]
+            },
+            {
+                category: "Accommodations",
+                questions: [
+                    {
+                        q: "What types of accommodations do you offer?",
+                        a: "We offer luxury lodges, tented camps, mobile camps, and exclusive private villas. All our accommodations are carefully selected for quality, comfort, and authentic safari experience."
+                    },
+                    {
+                        q: "Are the tented camps safe?",
+                        a: "Absolutely! Our tented camps are protected by trained staff, proper fencing where necessary, and follow strict safety protocols. Guests are always escorted after dark."
+                    },
+                    {
+                        q: "Can you accommodate dietary restrictions?",
+                        a: "Yes, we cater to vegetarian, vegan, gluten-free, halal, kosher, and other dietary requirements. Please inform us of any dietary needs at the time of booking."
+                    }
+                ]
+            }
+        ];
+
+        // DOM Elements
+        const faqContainer = document.getElementById("faqContainer");
+        const searchInput = document.getElementById("searchInput");
+        const noResults = document.getElementById("noResults");
+        const searchTermText = document.getElementById("searchTermText");
+        const clearSearch = document.getElementById("clearSearch");
+
+        // Render FAQ sections
+        function renderFaqs(filter = "") {
+            faqContainer.innerHTML = "";
+            let hasResults = false;
+
+            faqs.forEach(category => {
+                const matched = category.questions.filter(q =>
+                    q.q.toLowerCase().includes(filter) ||
+                    q.a.toLowerCase().includes(filter)
+                );
+
+                if (!matched.length) return;
+
+                hasResults = true;
+
+                // Create category section
+                const section = document.createElement("div");
+                section.className = "category";
+
+                const title = document.createElement("h2");
+                title.textContent = category.category;
+                section.appendChild(title);
+
+                // Create FAQ items
+                matched.forEach(faq => {
+                    const item = document.createElement("div");
+                    item.className = "faq-item";
+
+                    const button = document.createElement("button");
+                    button.className = "faq-question";
+                    button.innerHTML = `
+            ${faq.q}
+            <span>+</span>
+          `;
+
+                    const answer = document.createElement("div");
+                    answer.className = "faq-answer";
+                    answer.textContent = faq.a;
+
+                    item.appendChild(button);
+                    item.appendChild(answer);
+
+                    // Toggle answer on click
+                    button.addEventListener("click", () => {
+                        const isOpen = answer.style.display === "block";
+                        answer.style.display = isOpen ? "none" : "block";
+                        button.querySelector("span").textContent = isOpen ? "+" : "−";
+                    });
+
+                    section.appendChild(item);
+                });
+
+                faqContainer.appendChild(section);
+            });
+
+            // Show/hide no results message
+            noResults.classList.toggle("hidden", hasResults);
+            searchTermText.textContent = filter;
+        }
+
+        // Search functionality
+        searchInput.addEventListener("input", (e) => {
+            renderFaqs(e.target.value.toLowerCase().trim());
+        });
+
+        // Clear search
+        clearSearch.addEventListener("click", () => {
+            searchInput.value = "";
+            renderFaqs("");
+            searchInput.focus();
+        });
+
+        // Initial render
+        renderFaqs();
+    </script>
+</body>
+
+</html>

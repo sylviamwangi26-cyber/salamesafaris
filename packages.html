@@ -1,150 +1,1132 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EXPERIENCE KENYA,EXPLORE KENYA | Salame Safari Tours</title>
-  <link rel="stylesheet" href="../style.css">
+  <title>Safari Packages - Salame Safaris</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Lato:wght@300;400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+    /* CSS Variables */
+    :root {
+      --color-jungle: #2D4A3E;
+      --color-jungle-dark: #1a2e26;
+      --color-gold: var(--color-gold);
+      --color-gold-dark: #a56632;
+      --color-cream: #FAF7F2;
+      --color-beige: #F9F5F0;
+      --color-text: #1f2937;
+      --color-text-muted: #6b7280;
+      --color-border: #e5e7eb;
+      --color-white: #ffffff;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      --transition: all 0.3s ease;
+    }
+
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Lato', sans-serif;
+      background: var(--color-cream);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* ================= STANDARD NAVIGATION ================= */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 60px;
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--color-jungle);
+      letter-spacing: -0.5px;
+      line-height: 1;
+    }
+
+    .logo-text span {
+      color: var(--color-gold);
+      font-weight: 400;
+    }
+
+    .logo-sub {
+      font-size: 12px;
+      color: #6B7565;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .logo-main span {
+      display: none;
+    }
+
+    .nav nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav nav a {
+      text-decoration: none;
+      color: var(--color-text-muted);
+      font-size: 15px;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav nav a:hover,
+    .nav nav a.active {
+      color: var(--color-jungle);
+    }
+
+    /* Dropdown Styles */
+    .dropdown {
+      position: relative;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .dropdown-trigger {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      color: #6B7565;
+      font-size: 15px;
+      font-weight: 400;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      font-family: 'Montserrat', sans-serif;
+      padding: 0;
+    }
+
+    .dropdown-trigger:hover,
+    .dropdown-trigger.active {
+      color: var(--color-jungle);
+      font-weight: 600;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: #ffffff;
+      min-width: 180px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      padding: 10px 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1001;
+    }
+
+    .dropdown:hover .dropdown-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 10px 20px;
+      white-space: nowrap;
+      color: #6B7565;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .dropdown-content a:hover {
+      background: rgba(0, 0, 0, 0.03);
+      color: var(--color-jungle);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .nav-help {
+      color: var(--color-jungle);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--color-jungle);
+      color: white;
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--color-jungle-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: var(--color-jungle);
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        padding: 15px 20px;
+      }
+
+      .nav nav {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: #ffffff;
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 20px;
+        transition: left 0.3s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav nav.active {
+        left: 0;
+      }
+
+      .nav nav a {
+        font-size: 18px;
+        padding: 10px 0;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      .dropdown {
+        flex-direction: column;
+        height: auto;
+        width: 100%;
+      }
+
+      .dropdown-content {
+        position: static;
+        box-shadow: none;
+        transform: none;
+        display: none;
+        padding-left: 20px;
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .dropdown.active .dropdown-content {
+        display: block;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 500px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.9;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: #fff;
+      max-width: 900px;
+      padding: 0 24px;
+    }
+
+    .eyebrow {
+      color: var(--color-gold);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      display: block;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .hero h2 {
+      font-size: 64px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      letter-spacing: -1px;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.95);
+      max-width: 700px;
+      margin: 0 auto;
+      font-family: 'Lato', sans-serif;
+      line-height: 1.7;
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      background: var(--color-beige);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 72px;
+      z-index: 90;
+      padding: 20px 0;
+    }
+
+    .filter-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow-x: auto;
+    }
+
+    .filter-icon {
+      color: var(--color-text-muted);
+      font-size: 20px;
+      margin-right: 8px;
+    }
+
+    .filter-btn {
+      background: rgba(255, 255, 255, 0.6);
+      border: none;
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-jungle);
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .filter-btn.active {
+      background: var(--color-jungle);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(45, 74, 62, 0.3);
+    }
+
+    /* Packages Section */
+    .packages {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 64px 24px 120px;
+      background: var(--color-beige);
+    }
+
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    @media (max-width: 1200px) {
+      .packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .packages-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Package Card */
+    .package-card {
+      background: var(--color-cream);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12), 0 16px 32px rgba(0, 0, 0, 0.14);
+    }
+
+    .card-image {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .package-card:hover .card-image img {
+      transform: scale(1.05);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
+      color: #fff;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(255, 107, 53, 0.4);
+    }
+
+    .price-tag {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      background: var(--color-jungle);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      font-family: 'Lato', sans-serif;
+    }
+
+    .card-body {
+      padding: 24px;
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .star {
+      color: var(--color-gold);
+      font-size: 14px;
+    }
+
+    .card-body h3 {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-jungle);
+      margin-bottom: 12px;
+      line-height: 1.3;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .card-body .description {
+      color: var(--color-text-muted);
+      font-size: 15px;
+      margin-bottom: 16px;
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      line-clamp: 2;
+      overflow: hidden;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 20px;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .view-details-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      text-align: center;
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--color-jungle);
+      background: transparent;
+      color: var(--color-jungle);
+      font-weight: 600;
+      font-size: 15px;
+      text-decoration: none;
+      transition: var(--transition);
+      font-family: 'Lato', sans-serif;
+    }
+
+    .view-details-btn:hover {
+      background: var(--color-jungle);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* ================= MASTER FOOTER ================= */
+    .footer {
+      background: var(--color-jungle);
+      color: var(--color-white);
+      padding: 80px 24px 40px;
+      font-family: 'Lato', sans-serif;
+    }
+
+    .footer-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .footer-column h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 25px;
+      color: var(--color-white);
+    }
+
+    .footer-brand .logo {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-brand .logo-circle {
+      width: 44px;
+      height: 44px;
+      background: var(--color-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-jungle);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .footer-brand .logo-text .logo-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-white);
+      line-height: 1;
+    }
+
+    .footer-brand .logo-text .logo-sub {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-description {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 25px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .social-icon:hover {
+      background: var(--color-gold);
+      border-color: var(--color-gold);
+      color: var(--color-jungle);
+      transform: translateY(-3px);
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      font-size: 15px;
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-gold);
+      padding-left: 5px;
+    }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 15px;
+    }
+
+    .contact-icon {
+      color: var(--color-gold);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      text-align: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-bottom p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--color-gold);
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .footer-bottom p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-bottom-links a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .footer-bottom-links a:hover {
+      color: var(--color-gold);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .packages-grid {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .hero h2 {
+        font-size: 40px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .packages-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <!-- ================= NAVIGATION ================= -->
+  <header class="nav">
+    <a href="index.html" class="logo">
+      <img src="pictures/logo2.png" alt="Salame Safaris">
+      <span class="logo-text">Salame <span>Safaris</span></span>
+    </a>
 
-<!-- ================= NAVBAR ================= -->
-<nav class="navbar">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="services.html">Services</a>
-  <a href="packages.html" class="active">Packages</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="blog.html">Blog</a>
-  <a href="contacts.html">Contact</a>
-  <a href="helpcenter.html">Help Center</a>
-  <a href="packagedetails.html">PackageDetails</a>
-</nav>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="About.html">About</a>
+      <div class="dropdown">
+        <a href="Packages.html" class="dropdown-trigger active">Safari ▾</a>
+        <div class="dropdown-content">
+          <a href="Packages.html" style="color: var(--color-jungle); font-weight: 600;">Packages</a>
+          <a href="Services.html">Services</a>
+        </div>
+      </div>
+      <a href="Gallery.html">Gallery</a>
+      <a href="blog.html">Blog</a>
+      <a href="Contact.html">Contact</a>
+    </nav>
 
-<!-- ================= HERO ================= -->
-<header class="page-hero">
-  <h1>EXPLORE KENYA</h1>
-  <p>Carefully crafted safari experiences across Kenya</p>
-</header>
-
-<!-- ================= PACKAGES SECTION ================= -->
-<section class="packages-section">
-
-  <!-- ONE DAY SAFARI -->
-  <div class="package-card">
-    <img src="assets/images/oneday.jpg" alt="Hell’s Kitchen & Robinson Island">
-    <h2>One Day Safari – Malindi Experience</h2>
-    <p>
-      Hell’s Kitchen, Robinson Island, Mida Creek & a guided walk through Malindi town.
-    </p>
-    <p><strong>From €200 per person</strong></p>
-    <p><strong>Group size:</strong> 2 – 12 people</p>
-    <div class="package-actions">
-      <a href="packagedetails.html?package=oneday" class="btn-primary">More Information</a>
-      <a href="contacts.html" class="btn-secondary">Talk to Our Safari Experts</a>
+    <div class="nav-actions">
+      <a href="Help.html" class="nav-help">Help</a>
+      <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+      <a href="Booking.html" class="btn-primary">Book Safari</a>
     </div>
-  </div>
+  </header>
 
-  <!-- 2 DAYS / 1 NIGHT MASAI MARA -->
-  <div class="package-card">
-    <img src="assets/images/mara2.jpg" alt="Masai Mara Safari">
-    <h2>2 Days / 1 Night – Masai Mara</h2>
-    <p>Short but powerful safari in the world-famous Masai Mara.</p>
-    <p><strong>From €600 per person</strong></p>
-    <div class="package-actions">
-      <a href="packagedetails.html?package=mara2" class="btn-primary">More Information</a>
-      <a href="contacts.html" class="btn-secondary">Talk to Our Safari Experts</a>
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="Assests/hero-safari.jpg" alt="Safari Landscape" class="hero-bg">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="eyebrow">Our Packages</span>
+      <h2>Safari Experiences</h2>
+      <p>Choose from our carefully curated safari packages, each designed for unforgettable adventures</p>
     </div>
-  </div>
+  </section>
 
-  <!-- 3 DAYS TSAVO EAST & WEST -->
-  <div class="package-card">
-    <img src="assets/images/tsavo.jpg" alt="Tsavo East and West">
-    <h2>3 Days / 2 Nights – Tsavo East & West</h2>
-    <p>Red elephants, dramatic landscapes and classic game drives.</p>
-    <p><strong>From €600 per person</strong></p>
-    <div class="package-actions">
-      <a href="packagedetails.html?package=tsavo3" class="btn-primary">More Information</a>
-      <a href="contacts.html" class="btn-secondary">Talk to Our Safari Experts</a>
+  <!-- Filter Bar -->
+  <section class="filter-bar">
+    <div class="filter-container">
+      <span class="filter-icon">☰</span>
+      <button class="filter-btn active" data-category="all">All Packages</button>
+      <button class="filter-btn" data-category="adventure">Adventure</button>
+      <button class="filter-btn" data-category="luxury">Luxury</button>
+      <button class="filter-btn" data-category="photography">Photography</button>
+      <button class="filter-btn" data-category="family">Family</button>
     </div>
-  </div>
+  </section>
 
-  <!-- 4 DAYS NGUTUNI / ZIWANI / AMBOSELI / TSAVO EAST -->
-  <div class="package-card">
-    <img src="assets/images/amboseli.jpg" alt="Amboseli Safari">
-    <h2>4 Days / 3 Nights – Ngutuni, Ziwani, Amboseli & Tsavo East</h2>
-    <p>Elephants, Kilimanjaro views and rich wildlife diversity.</p>
-    <p><strong>From €600 per person</strong></p>
-    <div class="package-actions">
-      <a href="packagedetails.html?package=amboseli4" class="btn-primary">More Information</a>
-      <a href="contacts.html" class="btn-secondary">Talk to Our Safari Experts</a>
+  <!-- Packages Grid -->
+  <section class="packages">
+    <div class="packages-grid" id="packagesGrid">
+      <!-- Cards will be dynamically inserted here -->
     </div>
-  </div>
+  </section>
 
-  <!-- 5 DAYS AMBOSELI / TSAVO WEST / TAITA / TSAVO EAST -->
-  <div class="package-card">
-    <img src="assets/images/taita.jpg" alt="Taita Hills Safari">
-    <h2>5 Days / 4 Nights – Amboseli, Tsavo West, Taita Hills & Tsavo East</h2>
-    <p>Perfect balance of luxury lodges and wild adventure.</p>
-    <p><strong>From €1000 per person</strong></p>
-    <div class="package-actions">
-      <a href="packagedetails.html?package=classic5" class="btn-primary">More Information</a>
-      <a href="contacts.html" class="btn-secondary">Talk to Our Safari Experts</a>
+  <footer class="footer">
+    <div class="footer-grid">
+      <!-- Column 1: Brand -->
+      <div class="footer-column footer-brand">
+        <a href="index.html" class="logo">
+          <img src="pictures/logo2.png" alt="Salame Safaris">
+          <span class="logo-text" style="color: white;">Salame <span
+              style="color: var(--color-gold);">Safaris</span></span>
+        </a>
+        <p class="footer-description">
+          Experience the magic of African wildlife with our premium safari adventures. Creating unforgettable memories
+          since 1995.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Twitter">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+            </svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="YouTube">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Column 2: Quick Links -->
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="About.html">About Us</a></li>
+          <li><a href="Packages.html">Safari Packages</a></li>
+          <li><a href="Services.html">Our Services</a></li>
+          <li><a href="Gallery.html">Photo Gallery</a></li>
+          <li><a href="blog.html">Travel Blog</a></li>
+          <li><a href="Contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3: Destinations -->
+      <div class="footer-column">
+        <h4>Destinations</h4>
+        <ul class="footer-links">
+          <li><a href="#">Serengeti NP</a></li>
+          <li><a href="#">Masai Mara</a></li>
+          <li><a href="#">Kruger NP</a></li>
+          <li><a href="#">Okavango Delta</a></li>
+          <li><a href="#">Ngorongoro Crater</a></li>
+          <li><a href="#">Victoria Falls</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4: Contact -->
+      <div class="footer-column">
+        <h4>Contact Us</h4>
+        <div class="footer-contact">
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <span>123 Safari Lane, Arusha, Tanzania</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <span>+255 123 456 789</span>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <span>info@salamesafaris.com</span>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- 6 DAYS ABERDARE / NAKURU / NAIVASHA / MARA -->
-  <div class="package-card">
-    <img src="assets/images/nakuru.jpg" alt="Lake Nakuru Safari">
-    <h2>6 Days / 5 Nights – Aberdare, Nakuru, Naivasha & Masai Mara</h2>
-    <p>Highlands, lakes, flamingos and Big Five game drives.</p>
-    <p><strong>From €1000 per person</strong></p>
-    <div class="package-actions">
-      <a href="packagedetails.html?package=classic6" class="btn-primary">More Information</a>
-      <a href="contacts.html" class="btn-secondary">Talk to Our Safari Experts</a>
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>© 2025 Salame Safaris. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="Help.html">Help Center</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
     </div>
-  </div>
+  </footer>
 
-  <!-- 6 DAYS MARA / NAKURU / TSAVO EAST / AMBOSELI -->
-  <div class="package-card">
-    <img src="assets/images/mara.jpg" alt="Kenya Highlights Safari">
-    <h2>6 Days / 5 Nights – Masai Mara, Nakuru, Tsavo East & Amboseli</h2>
-    <p>A full Kenyan safari circuit covering top parks.</p>
-    <p><strong>From €900 per person</strong></p>
-    <div class="package-actions">
-      <a href="packagedetails.html?package=highlights6" class="btn-primary">More Information</a>
-      <a href="contacts.html" class="btn-secondary">Talk to Our Safari Experts</a>
-    </div>
-  </div>
+  <script>
+    // Package Data
+    const packages = [
+      {
+        id: 1,
+        name: "Classic Safari Adventure",
+        location: "Serengeti, Tanzania",
+        duration: "7 Days",
+        group: "Max 8",
+        price: 3500,
+        rating: 4.9,
+        reviews: 128,
+        image: "Assests/safari-jeep.jpg",
+        featured: true,
+        category: "adventure",
+        description: "Experience the iconic Serengeti with daily game drives, luxury camping, and witness the Great Migration."
+      },
+      {
+        id: 2,
+        name: "Wildlife Photography Tour",
+        location: "Masai Mara, Kenya",
+        duration: "5 Days",
+        group: "Max 6",
+        price: 2800,
+        rating: 4.8,
+        reviews: 94,
+        image: "Assests/zebras-waterhole.jpg",
+        featured: false,
+        category: "photography",
+        description: "Perfect for photographers seeking close encounters with Africa's most photogenic wildlife."
+      },
+      {
+        id: 3,
+        name: "Big Five Experience",
+        location: "Kruger National Park",
+        duration: "6 Days",
+        group: "Max 10",
+        price: 3200,
+        rating: 4.9,
+        reviews: 156,
+        image: "Assests/lion-portrait.jpg",
+        featured: true,
+        category: "adventure",
+        description: "Track the legendary Big Five in one of Africa's most renowned wildlife destinations."
+      },
+      {
+        id: 4,
+        name: "Luxury Honeymoon Safari",
+        location: "Okavango Delta",
+        duration: "8 Days",
+        group: "Private",
+        price: 5500,
+        rating: 5.0,
+        reviews: 67,
+        image: "Assests/giraffes-sunrise.jpg",
+        featured: true,
+        category: "luxury",
+        description: "An exclusive romantic escape featuring private game drives, champagne sundowners, and 5-star accommodations."
+      },
+      {
+        id: 5,
+        name: "Family Safari Adventure",
+        location: "Tarangire, Tanzania",
+        duration: "6 Days",
+        group: "Max 12",
+        price: 2900,
+        rating: 4.7,
+        reviews: 82,
+        image: "Assests/hero-safari.jpg",
+        featured: false,
+        category: "family",
+        description: "A family-friendly safari designed with activities for all ages and comfortable lodges."
+      },
+      {
+        id: 6,
+        name: "Ultimate African Safari",
+        location: "Multi-Country",
+        duration: "14 Days",
+        group: "Max 8",
+        price: 8500,
+        rating: 5.0,
+        reviews: 45,
+        image: "Assests/safari-lodge.jpg",
+        featured: true,
+        category: "luxury",
+        description: "The ultimate journey across Kenya, Tanzania, and Botswana. Experience Africa's finest destinations."
+      }
+    ];
 
-  <!-- 8 DAYS GRAND SAFARI -->
-  <div class="package-card">
-    <img src="assets/images/grand.jpg" alt="Grand Kenya Safari">
-    <h2>8 Days / 7 Nights – Mara, Nakuru, Amboseli, Taita Hills & Tsavo East</h2>
-    <p>The ultimate Kenya safari experience.</p>
-    <p><strong>From €2400 per person</strong></p>
-    <div class="package-actions">
-      <a href="packagedetails.html?package=grand8" class="btn-primary">More Information</a>
-      <a href="contacts.html" class="btn-secondary">Talk to Our Safari Experts</a>
-    </div>
-  </div>
+    const grid = document.getElementById('packagesGrid');
+    const filterButtons = document.querySelectorAll('.filter-btn');
 
-</section>
+    // Render packages
+    function renderPackages(category = 'all') {
+      const filtered = category === 'all'
+        ? packages
+        : packages.filter(pkg => pkg.category === category);
 
-<!-- ================= CTA ================= -->
-<section class="packages-cta">
-  <h2>Not Sure Which Package to Choose?</h2>
-  <p>Our safari experts are ready to help you plan the perfect trip.</p>
-  <a href="contacts.html" class="btn-primary">Contact Our Safari Experts</a>
-</section>
+      grid.innerHTML = filtered.map(pkg => `
+        <div class="package-card">
+          <div class="card-image">
+            <img src="${pkg.image}" alt="${pkg.name}">
+            ${pkg.featured ? '<span class="featured-badge">Featured</span>' : ''}
+            <div class="price-tag">$${pkg.price.toLocaleString()} / person</div>
+          </div>
+          <div class="card-body">
+            <div class="rating">
+              <span class="star">⭐</span>
+              <span>${pkg.rating} (${pkg.reviews} reviews)</span>
+            </div>
+            <h3>${pkg.name}</h3>
+            <p class="description">${pkg.description}</p>
+            <div class="meta">
+              <span class="meta-item">📍 ${pkg.location}</span>
+              <span class="meta-item">⏱ ${pkg.duration}</span>
+              <span class="meta-item">👥 ${pkg.group}</span>
+            </div>
+            <a href="#" class="view-details-btn">View Details →</a>
+          </div>
+        </div>
+      `).join('');
+    }
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <p>© 2026 Salame Safari Tours. All Rights Reserved.</p>
-</footer>
+    // Filter functionality
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderPackages(btn.dataset.category);
+      });
+    });
 
-<script src="main.js"></script>
-<script src="lang.js"></script>
+    // Initial render
+    renderPackages();
+  </script>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mainNav');
+      nav.classList.toggle('active');
+    }
+  </script>
 </body>
+
 </html>
